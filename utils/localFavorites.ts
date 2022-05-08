@@ -1,9 +1,8 @@
 /* eslint-disable import/no-anonymous-default-export */
 
 const toggleFavorite = (id: number) => {
-  let favorites: number[] = JSON.parse(
-    localStorage.getItem("favorites") || "[]"
-  );
+  let favorites: number[] = parseArray("favorites");
+
   if (favorites.includes(id)) {
     favorites = favorites.filter((pokeId) => pokeId !== id);
   } else {
@@ -13,4 +12,16 @@ const toggleFavorite = (id: number) => {
   localStorage.setItem("favorites", JSON.stringify(favorites));
 };
 
-export default { toggleFavorite };
+const existInFavorites = (id: number): boolean => {
+  // if (typeof window === "undefined") return false; // If not in browser
+
+  const favorites: number[] = parseArray("favorites");
+
+  return favorites.includes(id);
+};
+
+const parseArray = (arr: string) => {
+  return JSON.parse(localStorage.getItem(arr) || "[]");
+};
+
+export default { toggleFavorite, existInFavorites };

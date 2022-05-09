@@ -24,4 +24,8 @@ const parseArray = (arr: string) => {
   return JSON.parse(localStorage.getItem(arr) || "[]");
 };
 
-export default { toggleFavorite, existInFavorites };
+const getPokemons = (): number[] => {
+  return parseArray("favorites");
+}
+
+export default { toggleFavorite, existInFavorites, getPokemons };

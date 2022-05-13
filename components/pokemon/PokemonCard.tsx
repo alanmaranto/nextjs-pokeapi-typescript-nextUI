@@ -12,13 +12,13 @@ export const PokemonCard: FC<Props> = ({ pokemon }) => {
 
   const router = useRouter();
 
-  const sendToId = () => {
-    router.push(`/pokemon/${id}`);
+  const sendToPokemonView = () => {
+    router.push(`/name/${name}`);
   };
 
   return (
     <Grid xs={6} sm={3} md={2} xl={1} key={id}>
-      <Card hoverable clickable onClick={sendToId}>
+      <Card hoverable clickable onClick={sendToPokemonView}>
         <Card.Body css={{ p: 1 }}>
           <Card.Image src={img} width="100%" height={140} />
         </Card.Body>
